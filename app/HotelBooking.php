@@ -12,5 +12,23 @@ class HotelBooking extends Model
         'end_date',
         'customer_names',
         'customer_email',
+        'total_nights',
+        'total_cost'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+
+    public function room()
+    {
+        return $this->belongsTo('App\HotelRoom');
+    }
+
+    public function hotel()
+    {
+        return $this->hasOne(Hotel::class);
+    }
 }
