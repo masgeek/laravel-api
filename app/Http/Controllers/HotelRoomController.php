@@ -4,26 +4,30 @@ namespace App\Http\Controllers;
 
 use App\HotelRoom;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class HotelRoomController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        $rooms = HotelRoom::all();
+        $rooms = HotelRoom::with(['hotel', 'roomType'])->get();
 
-        return response()->json($rooms);
+        return response()->json([
+            'message' => 'Success!',
+            'data' => $rooms
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -37,38 +41,41 @@ class HotelRoomController extends Controller
 
         return response()->json([
             'message' => 'Room created successfully',
-            'room' > $room
-        ]);
+            'data' => $room,
+        ], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\HotelRoom $hotelRoom
-     * @return \Illuminate\Http\Response
+     * @param HotelRoom $hotelRoom
+     * @return Response
      */
-    public function show(HotelRoom $hotelRoom)
+    public function show($id)
     {
+        $hotelRoom = HotelRoom::with(['hotel', 'roomType'])->find($id);
         return response()->json([
-            'message' => 'Room details',
-            'room' => $hotelRoom
+            'message' => 'Hotel rooms',
+            'data' => $hotelRoom
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\HotelRoom $hotelRoom
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return Response
      */
-    public function update(Request $request, HotelRoom $hotelRoom)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'hotel_id' => 'required',
             'room_type_id' => 'required',
             'image' => 'required'
         ]);
+
+        $hotelRoom = HotelRoom::find($id);
 
         $room = $hotelRoom->update($request->all());
 
@@ -81,8 +88,8 @@ class HotelRoomController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\HotelRoom $hotelRoom
-     * @return \Illuminate\Http\Response
+     * @param HotelRoom $hotelRoom
+     * @return Response
      */
     public
     function destroy(HotelRoom $hotelRoom)

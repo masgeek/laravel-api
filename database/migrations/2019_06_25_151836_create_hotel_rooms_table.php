@@ -20,16 +20,17 @@ class CreateHotelRoomsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('hotel_id')->unsigned();
             $table->bigInteger('room_type_id')->unsigned();
+            $table->string('room_name', 100);
             $table->binary('image')->nullable(true);
             $table->timestamps();
 
-            $table->foreign('hotel_id','fk-hotel-room-id')
+            $table->foreign('hotel_id', 'fk-hotel-room-id')
                 ->references('id')
                 ->on('hotels')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('room_type_id','fk-hotel-room-type-id')
+            $table->foreign('room_type_id', 'fk-hotel-room-type-id')
                 ->references('id')
                 ->on('room_types')
                 ->onUpdate('cascade')
@@ -41,12 +42,14 @@ class CreateHotelRoomsTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
-     *
-     * @return void
+     * Reverse the migrations
      */
     public function down()
     {
-        Schema::dropIfExists('hotel_rooms');
+        Schema::table($this->tableName, function (Blueprint $table) {
+            $table->dropForeign('fk-hotel-room-type-id');
+            $table->dropForeign('fk-hotel-room-id');
+        });
+        Schema::dropIfExists($this->tableName);
     }
 }

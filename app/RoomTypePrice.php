@@ -10,4 +10,9 @@ class RoomTypePrice extends Model
         'room_type_id',
         'room_price'
     ];
+
+    public function roomType()
+    {
+        return $this->belongsTo('App\RoomType');
+    }
 }

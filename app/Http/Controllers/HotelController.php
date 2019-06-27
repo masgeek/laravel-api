@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
+use App\RoomTypePrice;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -11,7 +12,10 @@ class HotelController extends Controller
     {
         $hotels = Hotel::all();
 
-        return response()->json($hotels);
+        return response()->json([
+            'message' => 'Success!',
+            'data' => $hotels
+        ], 200);
     }
 
     public function store(Request $request)
@@ -36,12 +40,16 @@ class HotelController extends Controller
         ]);
     }
 
-    public function show(Hotel $hotel)
+    public function show($id)
     {
-        return $hotel;
+        $hotel = Hotel::all()->find($id);
+        return response()->json([
+            'message' => 'Success!',
+            'data' => $hotel
+        ]);
     }
 
-    public function update(Request $request, Hotel $hotel)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'nullable',
@@ -54,21 +62,24 @@ class HotelController extends Controller
             'email' => 'nullable',
             'image' => 'nullable',
         ]);
+        $hotel = Hotel::find($id);
 
         $hotel->update($request->all());
 
         return response()->json([
             'message' => 'Success! Hotel updated',
-            'task' => $hotel
+            'data' => $hotel
         ]);
     }
 
-    public function destroy(Hotel $hotel)
+    public function destroy($id)
     {
+        $hotel = Hotel::find('id', $id);
         $hotel->delete();
 
         return response()->json([
-            'message' => 'Successfully deleted hotel!'
+            'message' => 'Successfully deleted hotel!',
+            'data' => []
         ]);
     }
 }
