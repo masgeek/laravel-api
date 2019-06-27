@@ -107,7 +107,7 @@ class NewHotel extends Component {
                                     </div>
 
                                     <div className='row'>
-                                        <div className='col-md-6'>
+                                        <div className='col-md-4'>
                                             <label htmlFor='state'>State</label>
                                             <input
                                                 id='state'
@@ -119,7 +119,7 @@ class NewHotel extends Component {
                                             />
                                             {this.renderErrorFor('state')}
                                         </div>
-                                        <div className='col-md-6'>
+                                        <div className='col-md-4'>
                                             <label htmlFor='city'>Country</label>
                                             <input
                                                 id='country'
@@ -130,6 +130,18 @@ class NewHotel extends Component {
                                                 onChange={this.handleFieldChange}
                                             />
                                             {this.renderErrorFor('country')}
+                                        </div>
+                                        <div className='col-md-4'>
+                                            <label htmlFor='zip_code'>Zip code</label>
+                                            <input
+                                                id='zip_code'
+                                                type='text'
+                                                className={`form-control ${this.hasErrorFor('zip_code') ? 'is-invalid' : ''}`}
+                                                name='zip_code'
+                                                value={this.state.zip_code}
+                                                onChange={this.handleFieldChange}
+                                            />
+                                            {this.renderErrorFor('zip_code')}
                                         </div>
                                     </div>
 
