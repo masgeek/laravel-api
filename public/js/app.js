@@ -60648,7 +60648,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65976,6 +65976,65 @@ function (_Component) {
         value: this.state.city,
         onChange: this.handleFieldChange
       }), this.renderErrorFor('city'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "state"
+      }, "State"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "state",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('state') ? 'is-invalid' : ''),
+        name: "state",
+        value: this.state.state,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('state')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "city"
+      }, "Country"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "country",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('country') ? 'is-invalid' : ''),
+        name: "country",
+        value: this.state.country,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('country')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "zip_code"
+      }, "Zip code"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "zip_code",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('zip_code') ? 'is-invalid' : ''),
+        name: "zip_code",
+        value: this.state.zip_code,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('zip_code'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-6"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "phone_number"
+      }, "Phone Number"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "phone_number",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('phone_number') ? 'is-invalid' : ''),
+        name: "phone_number",
+        value: this.state.phone_number,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('phone_number')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-6"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "email"
+      }, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "email",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('email') ? 'is-invalid' : ''),
+        name: "email",
+        value: this.state.email,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('email'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
         htmlFor: "address"

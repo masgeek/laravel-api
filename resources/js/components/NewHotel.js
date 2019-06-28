@@ -145,6 +145,32 @@ class NewHotel extends Component {
                                         </div>
                                     </div>
 
+                                    <div className='row'>
+                                        <div className='col-md-6'>
+                                            <label htmlFor='phone_number'>Phone Number</label>
+                                            <input
+                                                id='phone_number'
+                                                type='text'
+                                                className={`form-control ${this.hasErrorFor('phone_number') ? 'is-invalid' : ''}`}
+                                                name='phone_number'
+                                                value={this.state.phone_number}
+                                                onChange={this.handleFieldChange}
+                                            />
+                                            {this.renderErrorFor('phone_number')}
+                                        </div>
+                                        <div className='col-md-6'>
+                                            <label htmlFor='email'>Email</label>
+                                            <input
+                                                id='email'
+                                                type='text'
+                                                className={`form-control ${this.hasErrorFor('email') ? 'is-invalid' : ''}`}
+                                                name='email'
+                                                value={this.state.email}
+                                                onChange={this.handleFieldChange}
+                                            />
+                                            {this.renderErrorFor('email')}
+                                        </div>
+                                    </div>
                                     <div className='form-group'>
                                         <label htmlFor='address'>Hotel address</label>
                                         <textarea
