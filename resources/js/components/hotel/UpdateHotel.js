@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {Link} from "react-router-dom";
 
 class UpdateHotel extends Component {
-    constructor(props) {
+    /*constructor(props) {
         super(props);
         this.state = {
             name: '',
@@ -17,7 +17,7 @@ class UpdateHotel extends Component {
             image: '',
             errors: []
         };
-    }
+    }*/
 
     componentDidMount() {
         const id = this.props.match.params.id;
