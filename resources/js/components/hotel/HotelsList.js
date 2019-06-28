@@ -1,6 +1,6 @@
 // resources/assets/js/components/HotelsList.js
 
-import axios from 'axios'
+import axios from 'axios/index'
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 

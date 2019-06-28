@@ -4,9 +4,9 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Header from './Header'
-import NewHotel from './NewHotel'
-import UpdateHotel from './UpdateHotel'
-import HotelsList from './HotelsList'
+import NewHotel from './hotel/NewHotel'
+import UpdateHotel from './hotel/UpdateHotel'
+import HotelsList from './hotel/HotelsList'
 
 class App extends Component {
     render() {
