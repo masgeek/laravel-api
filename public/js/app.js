@@ -65768,7 +65768,18 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HotelsList).call(this));
     _this.state = {
-      hotels: []
+      hotels: [{
+        id: '',
+        name: '',
+        address: '',
+        city: '',
+        state: '',
+        country: '',
+        zip_code: '',
+        phone_number: '',
+        email: '',
+        image: ''
+      }]
     };
     return _this;
   }
@@ -65785,8 +65796,50 @@ function (_Component) {
       });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "renderTableHeader",
+    value: function renderTableHeader() {
+      var hotels = this.state.hotels;
+      var header = Object.keys(hotels[0]);
+      return header.map(function (key, index) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+          key: index
+        }, key.toUpperCase());
+      });
+    }
+  }, {
+    key: "renderTableData",
+    value: function renderTableData() {
+      var hotels = this.state.hotels;
+      return hotels.map(function (hotel, index) {
+        var id = hotel.id,
+            name = hotel.name,
+            address = hotel.address,
+            city = hotel.city,
+            state = hotel.state,
+            country = hotel.country,
+            zip_code = hotel.zip_code,
+            phone_number = hotel.phone_number,
+            email = hotel.email,
+            image = hotel.image,
+            created_at = hotel.created_at,
+            updated_at = hotel.updated_at; //destructuring
+
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+          key: id
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, index + 1), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, address), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, city), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, state), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, country), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, zip_code), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, phone_number), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, email), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+          src: image,
+          alt: name,
+          className: "img img-thumbnail",
+          width: "128px"
+        })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          className: "btn btn-primary btn-sm mb-3",
+          to: "/create"
+        }, "Add new hotel")));
+      });
+    }
+  }, {
+    key: "renderOld",
+    value: function renderOld() {
       var hotels = this.state.hotels;
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container py-4"
@@ -65808,12 +65861,22 @@ function (_Component) {
       }, hotels.map(function (hotel) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
-          to: "/".concat(hotel.id),
+          to: "/update/".concat(hotel.id),
           key: hotel.id
         }, hotel.name, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
           className: "badge badge-primary badge-pill"
         }, hotel.zip_code));
       })))))));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
+        id: "title"
+      }, "Hotel list"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
+        id: "hotels",
+        className: "table table-bordered table-striped table-hover table-condensed"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Hotel name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "City"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "State"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Country"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Zip code"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Phone"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Image"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Actions")), this.renderTableData())));
     }
   }]);
 
@@ -65837,6 +65900,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -65856,6 +65920,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -65880,10 +65945,11 @@ function (_Component) {
       phone_number: '',
       email: '',
       address: '',
+      image: '',
       errors: []
     };
     _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
-    _this.handleCreateNewProject = _this.handleCreateNewProject.bind(_assertThisInitialized(_this));
+    _this.handleCreateNewHotel = _this.handleCreateNewHotel.bind(_assertThisInitialized(_this));
     _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
     _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
     return _this;
@@ -65895,8 +65961,8 @@ function (_Component) {
       this.setState(_defineProperty({}, event.target.name, event.target.value));
     }
   }, {
-    key: "handleCreateNewProject",
-    value: function handleCreateNewProject(event) {
+    key: "handleCreateNewHotel",
+    value: function handleCreateNewHotel(event) {
       var _this2 = this;
 
       event.preventDefault();
@@ -65909,7 +65975,8 @@ function (_Component) {
         zip_code: this.state.zip_code,
         phone_number: this.state.phone_number,
         email: this.state.email,
-        address: this.state.address
+        address: this.state.address,
+        image: this.state.image
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/hotels', project).then(function (response) {
         // redirect to the homepage
@@ -65950,7 +66017,7 @@ function (_Component) {
       }, "Add new hotel"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-        onSubmit: this.handleCreateNewProject
+        onSubmit: this.handleCreateNewHotel
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -66045,7 +66112,18 @@ function (_Component) {
         rows: "5",
         value: this.state.address,
         onChange: this.handleFieldChange
-      }), this.renderErrorFor('address')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }), this.renderErrorFor('address')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "image"
+      }, "Hotel image"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "image",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('image') ? 'is-invalid' : ''),
+        name: "image",
+        value: this.state.image,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('image')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-primary"
       }, "Create")))))));
     }

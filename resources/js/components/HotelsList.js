@@ -8,7 +8,20 @@ class HotelsList extends Component {
     constructor() {
         super()
         this.state = {
-            hotels: []
+            hotels: [
+                {
+                    id: '',
+                    name: '',
+                    address: '',
+                    city: '',
+                    state: '',
+                    country: '',
+                    zip_code: '',
+                    phone_number: '',
+                    email: '',
+                    image: ''
+                }
+            ]
         }
     }
 
@@ -20,7 +33,43 @@ class HotelsList extends Component {
         })
     }
 
-    render() {
+    renderTableHeader() {
+        const {hotels} = this.state;
+        let header = Object.keys(hotels[0])
+        return header.map((key, index) => {
+            return <th key={index}>{key.toUpperCase()}</th>
+        })
+    }
+
+    renderTableData() {
+        const {hotels} = this.state;
+        return hotels.map((hotel, index) => {
+            const {id, name, address, city, state, country, zip_code, phone_number, email, image, created_at, updated_at} = hotel; //destructuring
+            return (
+                <tr key={id}>
+                    <td>{index+1}</td>
+                    <td>{name}</td>
+                    <td>{address}</td>
+                    <td>{city}</td>
+                    <td>{state}</td>
+                    <td>{country}</td>
+                    <td>{zip_code}</td>
+                    <td>{phone_number}</td>
+                    <td>{email}</td>
+                    <td>
+                        <img src={image} alt={name} className='img img-thumbnail' width='128px'/>
+                    </td>
+                    <td>
+                        <Link className='btn btn-primary btn-sm mb-3' to='/create'>
+                            Add new hotel
+                        </Link>
+                    </td>
+                </tr>
+            )
+        })
+    }
+
+    renderOld() {
         const {hotels} = this.state;
         return (
             <div className='container py-4'>
@@ -36,7 +85,7 @@ class HotelsList extends Component {
                                     {hotels.map(hotel => (
                                         <Link
                                             className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'
-                                            to={`/${hotel.id}`}
+                                            to={`/update/${hotel.id}`}
                                             key={hotel.id}
                                         >
                                             {hotel.name}
@@ -51,6 +100,32 @@ class HotelsList extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
+        )
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 id='title'>Hotel list</h1>
+                <table id='hotels' className='table table-bordered table-striped table-hover table-condensed'>
+                    <tbody>
+                    <tr>
+                        <th>#</th>
+                        <th>Hotel name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Country</th>
+                        <th>Zip code</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                    {this.renderTableData()}
+                    </tbody>
+                </table>
             </div>
         )
     }

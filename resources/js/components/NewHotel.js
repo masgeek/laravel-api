@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {Component} from 'react'
+import {Link} from "react-router-dom";
 
 class NewHotel extends Component {
     constructor(props) {
@@ -13,10 +14,11 @@ class NewHotel extends Component {
             phone_number: '',
             email: '',
             address: '',
+            image: '',
             errors: []
         };
         this.handleFieldChange = this.handleFieldChange.bind(this);
-        this.handleCreateNewProject = this.handleCreateNewProject.bind(this);
+        this.handleCreateNewHotel = this.handleCreateNewHotel.bind(this);
         this.hasErrorFor = this.hasErrorFor.bind(this);
         this.renderErrorFor = this.renderErrorFor.bind(this);
     }
@@ -27,7 +29,7 @@ class NewHotel extends Component {
         })
     }
 
-    handleCreateNewProject(event) {
+    handleCreateNewHotel(event) {
         event.preventDefault();
 
         const {history} = this.props;
@@ -40,7 +42,8 @@ class NewHotel extends Component {
             zip_code: this.state.zip_code,
             phone_number: this.state.phone_number,
             email: this.state.email,
-            address: this.state.address
+            address: this.state.address,
+            image: this.state.image
         };
 
         axios.post('/api/hotels', project)
@@ -77,8 +80,7 @@ class NewHotel extends Component {
                         <div className='card'>
                             <div className='card-header'>Add new hotel</div>
                             <div className='card-body'>
-                                <form onSubmit={this.handleCreateNewProject}>
-
+                                <form onSubmit={this.handleCreateNewHotel}>
                                     <div className='row'>
                                         <div className='col-md-6'>
                                             <label htmlFor='name'>Hotel name</label>
@@ -105,7 +107,6 @@ class NewHotel extends Component {
                                             {this.renderErrorFor('city')}
                                         </div>
                                     </div>
-
                                     <div className='row'>
                                         <div className='col-md-4'>
                                             <label htmlFor='state'>State</label>
@@ -182,6 +183,18 @@ class NewHotel extends Component {
                                             onChange={this.handleFieldChange}
                                         />
                                         {this.renderErrorFor('address')}
+                                    </div>
+                                    <div className='form-group'>
+                                        <label htmlFor='image'>Hotel image</label>
+                                        <input
+                                            id='image'
+                                            type='text'
+                                            className={`form-control ${this.hasErrorFor('image') ? 'is-invalid' : ''}`}
+                                            name='image'
+                                            value={this.state.image}
+                                            onChange={this.handleFieldChange}
+                                        />
+                                        {this.renderErrorFor('image')}
                                     </div>
                                     <button className='btn btn-primary'>Create</button>
                                 </form>

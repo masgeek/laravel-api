@@ -9,6 +9,6 @@ const Header = () => (
             <Link className='navbar-brand' to='/'>Tsobu hotels</Link>
         </div>
     </nav>
-)
+);
 
 export default Header
