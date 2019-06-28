@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Header from './Header'
 import NewHotel from './NewHotel'
+import UpdateHotel from './UpdateHotel'
 import HotelsList from './HotelsList'
 
 class App extends Component {
@@ -16,6 +17,8 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/' component={HotelsList}/>
                         <Route path='/new-hotel' component={NewHotel}/>
+                        <Route path='/view-hotel/:id' component={NewHotel}/>
+                        <Route path='/update-hotel/:id' component={UpdateHotel}/>
                     </Switch>
                 </div>
             </BrowserRouter>

@@ -47,7 +47,7 @@ class HotelsList extends Component {
             const {id, name, address, city, state, country, zip_code, phone_number, email, image, created_at, updated_at} = hotel; //destructuring
             return (
                 <tr key={id}>
-                    <td>{index + 1}</td>
+                    <th>{index + 1}</th>
                     <td>{name}</td>
                     <td>{address}</td>
                     <td>{city}</td>
@@ -57,17 +57,16 @@ class HotelsList extends Component {
                     <td>{phone_number}</td>
                     <td>{email}</td>
                     <td>
-                        <img src={image} alt={name} className='img img-thumbnail' width='128px'/>
+                        <img src={image} alt={name} className='rounded img-thumbnail' width='128px'/>
                     </td>
                     <td>
-                        <Link to={`/view-hotel/${id}`} className='btn btn-success btn-sm mb-3'>View hotel</Link>
+                        <Link to={`/view-hotel/${id}`} className='btn btn-outline-success btn-md'>View</Link>
                     </td>
                     <td>
-                        <Link to={`/edit-hotel/${id}`} className='btn btn-primary btn-sm mb-3'>Edit hotel</Link>
-
+                        <Link to={`/edit-hotel/${id}`} className='btn btn-outline-primary btn-md'>Update</Link>
                     </td>
                     <td>
-                        <Link to={`/delete-hotel/${id}`} className='btn btn-danger btn-sm mb-3'>Delete hotel</Link>
+                        <Link to={`/delete-hotel/${id}`} className='btn btn-outline-danger btn-md'>Delete</Link>
                     </td>
                 </tr>
             )
@@ -82,6 +81,7 @@ class HotelsList extends Component {
                     Add new hotel
                 </Link>
                 <table id='hotels' className='table table-bordered table-striped table-hover table-condensed'>
+                    <caption>List of hotels</caption>
                     <tbody>
                     <tr>
                         <th>#</th>
@@ -94,7 +94,7 @@ class HotelsList extends Component {
                         <th>Phone</th>
                         <th>Email</th>
                         <th>Image</th>
-                        <th colSpan={3}>Actions</th>
+                        <th colSpan={3}></th>
                     </tr>
                     {this.renderTableData()}
                     </tbody>

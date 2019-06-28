@@ -65629,7 +65629,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.js");
 /* harmony import */ var _NewHotel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NewHotel */ "./resources/js/components/NewHotel.js");
-/* harmony import */ var _HotelsList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./HotelsList */ "./resources/js/components/HotelsList.js");
+/* harmony import */ var _UpdateHotel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UpdateHotel */ "./resources/js/components/UpdateHotel.js");
+/* harmony import */ var _HotelsList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./HotelsList */ "./resources/js/components/HotelsList.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65656,6 +65657,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var App =
 /*#__PURE__*/
 function (_Component) {
@@ -65673,10 +65675,16 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/",
-        component: _HotelsList__WEBPACK_IMPORTED_MODULE_5__["default"]
+        component: _HotelsList__WEBPACK_IMPORTED_MODULE_6__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/new-hotel",
         component: _NewHotel__WEBPACK_IMPORTED_MODULE_4__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/view-hotel/:id",
+        component: _NewHotel__WEBPACK_IMPORTED_MODULE_4__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/update-hotel/:id",
+        component: _UpdateHotel__WEBPACK_IMPORTED_MODULE_5__["default"]
       }))));
     }
   }]);
@@ -65826,21 +65834,21 @@ function (_Component) {
 
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
           key: id
-        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, index + 1), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, address), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, city), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, state), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, country), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, zip_code), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, phone_number), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, email), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, index + 1), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, address), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, city), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, state), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, country), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, zip_code), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, phone_number), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, email), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
           src: image,
           alt: name,
-          className: "img img-thumbnail",
+          className: "rounded img-thumbnail",
           width: "128px"
         })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/view-hotel/".concat(id),
-          className: "btn btn-success btn-sm mb-3"
-        }, "View hotel")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          className: "btn btn-outline-success btn-md"
+        }, "View")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/edit-hotel/".concat(id),
-          className: "btn btn-primary btn-sm mb-3"
-        }, "Edit hotel")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          className: "btn btn-outline-primary btn-md"
+        }, "Update")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/delete-hotel/".concat(id),
-          className: "btn btn-danger btn-sm mb-3"
-        }, "Delete hotel")));
+          className: "btn btn-outline-danger btn-md"
+        }, "Delete")));
       });
     }
   }, {
@@ -65856,9 +65864,9 @@ function (_Component) {
       }, "Add new hotel"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
         id: "hotels",
         className: "table table-bordered table-striped table-hover table-condensed"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Hotel name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "City"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "State"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Country"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Zip code"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Phone"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Image"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("caption", null, "List of hotels"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Hotel name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "City"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "State"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Country"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Zip code"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Phone"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Image"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         colSpan: 3
-      }, "Actions")), this.renderTableData())));
+      })), this.renderTableData())));
     }
   }]);
 
@@ -66115,6 +66123,71 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (NewHotel);
+
+/***/ }),
+
+/***/ "./resources/js/components/UpdateHotel.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/UpdateHotel.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var UpdateHotel =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(UpdateHotel, _Component);
+
+  function UpdateHotel(props) {
+    var _this;
+
+    _classCallCheck(this, UpdateHotel);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UpdateHotel).call(this, props));
+    _this.state = {
+      name: '',
+      city: '',
+      state: '',
+      country: '',
+      zip_code: '',
+      phone_number: '',
+      email: '',
+      address: '',
+      image: '',
+      errors: []
+    };
+    return _this;
+  }
+
+  return UpdateHotel;
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (UpdateHotel);
 
 /***/ }),
 
