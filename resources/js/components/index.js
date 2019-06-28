@@ -8,7 +8,7 @@ import NewHotel from './hotel/NewHotel'
 import UpdateHotel from './hotel/UpdateHotel'
 import HotelsList from './hotel/HotelsList'
 
-class App extends Component {
+class Index extends Component {
     render() {
         return (
             <BrowserRouter>
@@ -26,4 +26,4 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<Index/>, document.getElementById('app'));
