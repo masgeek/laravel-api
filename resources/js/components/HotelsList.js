@@ -1,4 +1,4 @@
-// resources/assets/js/components/ProjectsList.js
+// resources/assets/js/components/HotelsList.js
 
 import axios from 'axios'
 import React, {Component} from 'react'
@@ -47,7 +47,7 @@ class HotelsList extends Component {
             const {id, name, address, city, state, country, zip_code, phone_number, email, image, created_at, updated_at} = hotel; //destructuring
             return (
                 <tr key={id}>
-                    <td>{index+1}</td>
+                    <td>{index + 1}</td>
                     <td>{name}</td>
                     <td>{address}</td>
                     <td>{city}</td>
@@ -60,54 +60,27 @@ class HotelsList extends Component {
                         <img src={image} alt={name} className='img img-thumbnail' width='128px'/>
                     </td>
                     <td>
-                        <Link className='btn btn-primary btn-sm mb-3' to='/create'>
-                            Add new hotel
-                        </Link>
+                        <Link to={`/view-hotel/${id}`} className='btn btn-success btn-sm mb-3'>View hotel</Link>
+                    </td>
+                    <td>
+                        <Link to={`/edit-hotel/${id}`} className='btn btn-primary btn-sm mb-3'>Edit hotel</Link>
+
+                    </td>
+                    <td>
+                        <Link to={`/delete-hotel/${id}`} className='btn btn-danger btn-sm mb-3'>Delete hotel</Link>
                     </td>
                 </tr>
             )
         })
     }
 
-    renderOld() {
-        const {hotels} = this.state;
-        return (
-            <div className='container py-4'>
-                <div className='row justify-content-center'>
-                    <div className='col-md-8'>
-                        <div className='card'>
-                            <div className='card-header'>All hotels</div>
-                            <div className='card-body'>
-                                <Link className='btn btn-primary btn-sm mb-3' to='/create'>
-                                    Add new hotel
-                                </Link>
-                                <ul className='list-group list-group-flush'>
-                                    {hotels.map(hotel => (
-                                        <Link
-                                            className='list-group-item list-group-item-action d-flex justify-content-between align-items-center'
-                                            to={`/update/${hotel.id}`}
-                                            key={hotel.id}
-                                        >
-                                            {hotel.name}
-                                            <span className='badge badge-primary badge-pill'>
-                            {hotel.zip_code}
-                          </span>
-                                        </Link>
-                                    ))}
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
     render() {
         return (
-            <div>
+            <div className='col-md-12'>
                 <h1 id='title'>Hotel list</h1>
+                <Link className='btn btn-primary btn-md mb-3' to='/new-hotel'>
+                    Add new hotel
+                </Link>
                 <table id='hotels' className='table table-bordered table-striped table-hover table-condensed'>
                     <tbody>
                     <tr>
@@ -121,7 +94,7 @@ class HotelsList extends Component {
                         <th>Phone</th>
                         <th>Email</th>
                         <th>Image</th>
-                        <th>Actions</th>
+                        <th colSpan={3}>Actions</th>
                     </tr>
                     {this.renderTableData()}
                     </tbody>

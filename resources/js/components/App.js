@@ -15,7 +15,7 @@ class App extends Component {
                     <Header/>
                     <Switch>
                         <Route exact path='/' component={HotelsList}/>
-                        <Route path='/create' component={NewHotel}/>
+                        <Route path='/new-hotel' component={NewHotel}/>
                     </Switch>
                 </div>
             </BrowserRouter>

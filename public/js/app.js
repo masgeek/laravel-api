@@ -65675,7 +65675,7 @@ function (_Component) {
         path: "/",
         component: _HotelsList__WEBPACK_IMPORTED_MODULE_5__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/create",
+        path: "/new-hotel",
         component: _NewHotel__WEBPACK_IMPORTED_MODULE_4__["default"]
       }))));
     }
@@ -65751,7 +65751,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-// resources/assets/js/components/ProjectsList.js
+// resources/assets/js/components/HotelsList.js
 
 
 
@@ -65832,51 +65832,33 @@ function (_Component) {
           className: "img img-thumbnail",
           width: "128px"
         })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          className: "btn btn-primary btn-sm mb-3",
-          to: "/create"
-        }, "Add new hotel")));
+          to: "/view-hotel/".concat(id),
+          className: "btn btn-success btn-sm mb-3"
+        }, "View hotel")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/edit-hotel/".concat(id),
+          className: "btn btn-primary btn-sm mb-3"
+        }, "Edit hotel")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/delete-hotel/".concat(id),
+          className: "btn btn-danger btn-sm mb-3"
+        }, "Delete hotel")));
       });
-    }
-  }, {
-    key: "renderOld",
-    value: function renderOld() {
-      var hotels = this.state.hotels;
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "container py-4"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "col-md-8"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-header"
-      }, "All hotels"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "card-body"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        className: "btn btn-primary btn-sm mb-3",
-        to: "/create"
-      }, "Add new hotel"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
-        className: "list-group list-group-flush"
-      }, hotels.map(function (hotel) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          className: "list-group-item list-group-item-action d-flex justify-content-between align-items-center",
-          to: "/update/".concat(hotel.id),
-          key: hotel.id
-        }, hotel.name, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
-          className: "badge badge-primary badge-pill"
-        }, hotel.zip_code));
-      })))))));
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-12"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
         id: "title"
-      }, "Hotel list"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
+      }, "Hotel list"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "btn btn-primary btn-md mb-3",
+        to: "/new-hotel"
+      }, "Add new hotel"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
         id: "hotels",
         className: "table table-bordered table-striped table-hover table-condensed"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Hotel name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "City"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "State"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Country"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Zip code"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Phone"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Image"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Actions")), this.renderTableData())));
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Hotel name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "City"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "State"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Country"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Zip code"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Phone"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Image"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        colSpan: 3
+      }, "Actions")), this.renderTableData())));
     }
   }]);
 
