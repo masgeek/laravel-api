@@ -65686,12 +65686,12 @@ var HotelsList =
 function (_Component) {
   _inherits(HotelsList, _Component);
 
-  function HotelsList() {
+  function HotelsList(props) {
     var _this;
 
     _classCallCheck(this, HotelsList);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(HotelsList).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(HotelsList).call(this, props));
     _this.state = {
       hotels: [{
         id: '',
@@ -66196,7 +66196,7 @@ function (_Component) {
         path: "/view-hotel/:id",
         component: _hotel_NewHotel__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/update-hotel/:id",
+        path: "/edit-hotel/:id",
         component: _hotel_UpdateHotel__WEBPACK_IMPORTED_MODULE_5__["default"]
       }))));
     }

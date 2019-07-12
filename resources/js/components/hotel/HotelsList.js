@@ -5,8 +5,8 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 class HotelsList extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props);
         this.state = {
             hotels: [
                 {

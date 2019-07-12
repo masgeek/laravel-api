@@ -18,7 +18,7 @@ class Index extends Component {
                         <Route exact path='/' component={HotelsList}/>
                         <Route path='/new-hotel' component={NewHotel}/>
                         <Route path='/view-hotel/:id' component={NewHotel}/>
-                        <Route path='/update-hotel/:id' component={UpdateHotel}/>
+                        <Route path='/edit-hotel/:id' component={UpdateHotel}/>
                     </Switch>
                 </div>
             </BrowserRouter>
