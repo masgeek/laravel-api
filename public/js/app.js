@@ -65660,6 +65660,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -65668,9 +65670,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -65685,38 +65687,215 @@ var EditHotel =
 function (_Component) {
   _inherits(EditHotel, _Component);
 
-  function EditHotel() {
+  function EditHotel(props) {
+    var _this;
+
     _classCallCheck(this, EditHotel);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EditHotel).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EditHotel).call(this, props));
+    _this.state = {
+      name: '',
+      city: '',
+      state: '',
+      country: '',
+      zip_code: '',
+      phone_number: '',
+      email: '',
+      address: '',
+      image: '',
+      errors: []
+    };
+    _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
+    _this.handleUpdateHotel = _this.handleUpdateHotel.bind(_assertThisInitialized(_this));
+    _this.hasErrorFor = _this.hasErrorFor.bind(_assertThisInitialized(_this));
+    _this.renderErrorFor = _this.renderErrorFor.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(EditHotel, [{
     key: "componentDidMount",
-
-    /*constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            city: '',
-            state: '',
-            country: '',
-            zip_code: '',
-            phone_number: '',
-            email: '',
-            address: '',
-            image: '',
-            errors: []
-        };
-    }*/
     value: function componentDidMount() {
+      var _this2 = this;
+
       var id = this.props.match.params.id;
-      console.log('Hello world' + id);
+      axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/hotels/".concat(id)).then(function (response) {
+        var hotel = response.data.data;
+
+        _this2.setState(hotel);
+      });
+    }
+  }, {
+    key: "handleUpdateHotel",
+    value: function handleUpdateHotel(event) {
+      var _this3 = this;
+
+      event.preventDefault();
+      var id = this.props.match.params.id;
+      var history = this.props.history;
+      var project = {
+        name: this.state.name,
+        city: this.state.city,
+        state: this.state.state,
+        country: this.state.country,
+        zip_code: this.state.zip_code,
+        phone_number: this.state.phone_number,
+        email: this.state.email,
+        address: this.state.address //image: this.state.image
+
+      };
+      axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/hotels/".concat(id), project).then(function (response) {
+        // redirect to the homepage
+        history.push('/'); //console.log(response);
+      })["catch"](function (error) {
+        _this3.setState({
+          errors: error.response.data.message
+        });
+      });
+    }
+  }, {
+    key: "handleFieldChange",
+    value: function handleFieldChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: "hasErrorFor",
+    value: function hasErrorFor(field) {
+      return !!this.state.errors[field];
+    }
+  }, {
+    key: "renderErrorFor",
+    value: function renderErrorFor(field) {
+      if (this.hasErrorFor(field)) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+          className: "invalid-feedback"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, this.state.errors[field][0]));
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "We are here");
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "container py-4"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-12"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-header"
+      }, "Update hotel: ", this.state.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+        onSubmit: this.handleUpdateHotel
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-6"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "name"
+      }, "Hotel name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "name",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('name') ? 'is-invalid' : ''),
+        name: "name",
+        value: this.state.name,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('name')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-6"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "city"
+      }, "Hotel city"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "city",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('city') ? 'is-invalid' : ''),
+        name: "city",
+        value: this.state.city,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('city'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "state"
+      }, "State"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "state",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('state') ? 'is-invalid' : ''),
+        name: "state",
+        value: this.state.state,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('state')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "city"
+      }, "Country"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "country",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('country') ? 'is-invalid' : ''),
+        name: "country",
+        value: this.state.country,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('country')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-4"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "zip_code"
+      }, "Zip code"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "zip_code",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('zip_code') ? 'is-invalid' : ''),
+        name: "hotel.zip_code",
+        value: this.state.zip_code,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('zip_code'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-6"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "phone_number"
+      }, "Phone Number"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "phone_number",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('phone_number') ? 'is-invalid' : ''),
+        name: "phone_number",
+        value: this.state.phone_number,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('phone_number')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-6"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "email"
+      }, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "email",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('email') ? 'is-invalid' : ''),
+        name: "email",
+        value: this.state.email,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('email'))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "address"
+      }, "Hotel address"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("textarea", {
+        id: "address",
+        className: "form-control ".concat(this.hasErrorFor('address') ? 'is-invalid' : ''),
+        name: "address",
+        rows: "5",
+        value: this.state.address,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('address')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        htmlFor: "image"
+      }, "Hotel image"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        id: "image",
+        type: "text",
+        className: "form-control ".concat(this.hasErrorFor('image') ? 'is-invalid' : ''),
+        name: "image",
+        value: this.state.image,
+        onChange: this.handleFieldChange
+      }), this.renderErrorFor('image')), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "btn btn-outline-dark btn-block"
+      }, "Update hotel")))))));
     }
   }]);
 
