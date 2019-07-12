@@ -25,6 +25,8 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "@coreui/coreui": "^2.1.12",
+        "@coreui/react": "^2.5.1",
         "react-router-dom": "^5.0.1",
         "semantic-ui-react": "^0.87.2"
     }
