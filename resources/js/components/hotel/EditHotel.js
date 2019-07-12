@@ -2,7 +2,7 @@ import axios from 'axios/index'
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
 
-class UpdateHotel extends Component {
+class EditHotel extends Component {
     /*constructor(props) {
         super(props);
         this.state = {
@@ -31,4 +31,4 @@ class UpdateHotel extends Component {
     }
 }
 
-export default UpdateHotel
+export default EditHotel

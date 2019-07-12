@@ -65644,6 +65644,89 @@ var Header = function Header() {
 
 /***/ }),
 
+/***/ "./resources/js/components/hotel/EditHotel.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/hotel/EditHotel.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios/index */ "./node_modules/axios/index.js");
+/* harmony import */ var axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_index__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var EditHotel =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(EditHotel, _Component);
+
+  function EditHotel() {
+    _classCallCheck(this, EditHotel);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(EditHotel).apply(this, arguments));
+  }
+
+  _createClass(EditHotel, [{
+    key: "componentDidMount",
+
+    /*constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            city: '',
+            state: '',
+            country: '',
+            zip_code: '',
+            phone_number: '',
+            email: '',
+            address: '',
+            image: '',
+            errors: []
+        };
+    }*/
+    value: function componentDidMount() {
+      var id = this.props.match.params.id;
+      console.log('Hello world' + id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "We are here");
+    }
+  }]);
+
+  return EditHotel;
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (EditHotel);
+
+/***/ }),
+
 /***/ "./resources/js/components/hotel/HotelsList.js":
 /*!*****************************************************!*\
   !*** ./resources/js/components/hotel/HotelsList.js ***!
@@ -66043,89 +66126,6 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/hotel/UpdateHotel.js":
-/*!******************************************************!*\
-  !*** ./resources/js/components/hotel/UpdateHotel.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios/index */ "./node_modules/axios/index.js");
-/* harmony import */ var axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios_index__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-var UpdateHotel =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(UpdateHotel, _Component);
-
-  function UpdateHotel() {
-    _classCallCheck(this, UpdateHotel);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(UpdateHotel).apply(this, arguments));
-  }
-
-  _createClass(UpdateHotel, [{
-    key: "componentDidMount",
-
-    /*constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            city: '',
-            state: '',
-            country: '',
-            zip_code: '',
-            phone_number: '',
-            email: '',
-            address: '',
-            image: '',
-            errors: []
-        };
-    }*/
-    value: function componentDidMount() {
-      var id = this.props.match.params.id;
-      console.log('Hello world' + id);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "We are here");
-    }
-  }]);
-
-  return UpdateHotel;
-}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (UpdateHotel);
-
-/***/ }),
-
 /***/ "./resources/js/components/index.js":
 /*!******************************************!*\
   !*** ./resources/js/components/index.js ***!
@@ -66142,7 +66142,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.js");
 /* harmony import */ var _hotel_NewHotel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hotel/NewHotel */ "./resources/js/components/hotel/NewHotel.js");
-/* harmony import */ var _hotel_UpdateHotel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hotel/UpdateHotel */ "./resources/js/components/hotel/UpdateHotel.js");
+/* harmony import */ var _hotel_EditHotel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hotel/EditHotel */ "./resources/js/components/hotel/EditHotel.js");
 /* harmony import */ var _hotel_HotelsList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hotel/HotelsList */ "./resources/js/components/hotel/HotelsList.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -66197,7 +66197,7 @@ function (_Component) {
         component: _hotel_NewHotel__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/edit-hotel/:id",
-        component: _hotel_UpdateHotel__WEBPACK_IMPORTED_MODULE_5__["default"]
+        component: _hotel_EditHotel__WEBPACK_IMPORTED_MODULE_5__["default"]
       }))));
     }
   }]);
