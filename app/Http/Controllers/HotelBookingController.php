@@ -48,7 +48,7 @@ class HotelBookingController extends Controller
         $endDate = strtotime($request->end_date);
         $datediff = $endDate - $startDate;
 
-        $numberOfDaays = round($datediff / (60 * 60 * 24));
+        $numberOfDays = round($datediff / (60 * 60 * 24));
 
         $book = new HotelBooking();
         $book->fill($request->all());
