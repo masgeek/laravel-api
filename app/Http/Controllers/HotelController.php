@@ -12,10 +12,9 @@ class HotelController extends Controller
     {
         $hotels = Hotel::all();
 
-        return response()->json([
-            'message' => 'Success!',
-            'data' => $hotels
-        ], 200);
+        return response()->json(
+            $hotels
+        , 200) ->header('X-Total-Count', $hotels->count());
     }
 
     public function store(Request $request)

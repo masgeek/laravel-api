@@ -27,6 +27,9 @@
     "dependencies": {
         "@coreui/coreui": "^2.1.12",
         "@coreui/react": "^2.5.1",
+        "prop-types": "^15.7.2",
+        "ra-data-json-server": "^2.9.4",
+        "react-admin": "^2.9.4",
         "react-router-dom": "^5.0.1",
         "semantic-ui-react": "^0.87.2"
     }
