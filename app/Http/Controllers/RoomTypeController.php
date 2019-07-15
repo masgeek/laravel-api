@@ -36,10 +36,7 @@ class RoomTypeController extends Controller
 
         $roomType = RoomType::create($request->all());
 
-        return response()->json([
-            'message' => 'Success! New room type created',
-            'data' => $roomType
-        ]);
+        return response()->json($roomType);
     }
 
     /**
@@ -51,10 +48,7 @@ class RoomTypeController extends Controller
     public function show($id)
     {
         $roomType = RoomType::find($id);
-        return response()->json([
-            'message' => 'Room type',
-            'data' => $roomType
-        ]);
+        return response()->json($roomType);
     }
 
     /**
@@ -73,20 +67,21 @@ class RoomTypeController extends Controller
         $roomType = RoomType::find($id);
         $roomType->update($request->all());
 
-        return response()->json([
-            'message' => 'Success! Room type updated',
-            'data' => $roomType
-        ], 200);
+        return response()->json($roomType);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param RoomType $roomType
+     * @param $id
      * @return Response
      */
-    public function destroy(RoomType $roomType)
+    public function destroy($id)
     {
-        //
+        $article = RoomType::findOrFail($id);
+
+        $article->delete();
+
+        return response()->json([]);
     }
 }

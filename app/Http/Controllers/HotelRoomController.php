@@ -54,11 +54,8 @@ class HotelRoomController extends Controller
      */
     public function show($id)
     {
-        $hotelRoom = HotelRoom::with(['hotel', 'roomType'])->find($id);
-        return response()->json([
-            'message' => 'Hotel rooms',
-            'data' => $hotelRoom
-        ]);
+        $hotelRoom = HotelRoom::find($id);
+        return response()->json($hotelRoom);
     }
 
     /**
@@ -80,10 +77,7 @@ class HotelRoomController extends Controller
 
         $room = $hotelRoom->update($request->all());
 
-        return response()->json([
-            'message' => 'Room updated successfully',
-            'room' > $room
-        ]);
+        return response()->json($room);
     }
 
     /**

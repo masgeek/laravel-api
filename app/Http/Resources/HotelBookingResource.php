@@ -30,7 +30,6 @@ class HotelBookingResource extends JsonResource
         $this->room->roomType;
 
         return [
-            //'room_id' => $this->room_id,
             'id' => $this->id,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
@@ -39,8 +38,6 @@ class HotelBookingResource extends JsonResource
             'total_nights' => $this->total_nights,
             'total_cost' => $this->total_cost,
             'hotelRoomId' => $this->room->id,
-//            'room' => $this->room,
-//            'roomType' => $this->room->roomType->room_type_name
         ];
     }
 }

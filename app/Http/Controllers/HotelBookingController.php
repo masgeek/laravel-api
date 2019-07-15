@@ -36,7 +36,7 @@ class HotelBookingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param HotelBookingRequest $request
-     * @return Response
+     * @return JsonResponse
      */
     public function store(HotelBookingRequest $request)
     {
@@ -45,14 +45,7 @@ class HotelBookingController extends Controller
         $booking = HotelBooking::create($request->all());
 
         return (new HotelBookingResource($booking))
-            ->response()
-            ->setStatusCode(201);
-
-
-        return response()->json([
-            'message' => 'Success! New booking made',
-            'data' => $booking
-        ]);
+            ->response();
     }
 
     /**
@@ -63,11 +56,8 @@ class HotelBookingController extends Controller
      */
     public function show($id)
     {
-        $hotelBooking = HotelBooking::with(['user', 'room', 'room.roomType'])->find($id);
-        return response()->json([
-            'message' => 'Success',
-            'data' => $hotelBooking
-        ]);
+        $hotelBooking = HotelBooking::with(['user', 'room', 'room.roomType'])->findOrFail($id);
+        return response()->json($hotelBooking);
     }
 
     /**
@@ -87,13 +77,10 @@ class HotelBookingController extends Controller
             'customer_email' => 'nullable'
         ]);
 
-        $hotelBooking = HotelBooking::find($id);
+        $hotelBooking = HotelBooking::findOrFail($id);
         $hotelBooking->update($request->all());
 
-        return response()->json([
-            'message' => 'Success! Hotel booking updated',
-            'data' => $hotelBooking
-        ]);
+        return response()->json($hotelBooking);
     }
 
     /**
@@ -104,7 +91,7 @@ class HotelBookingController extends Controller
      */
     public function destroy($id)
     {
-        $hotelBooking = HotelBooking::find('id', $id);
+        $hotelBooking = HotelBooking::findOrFail('id', $id);
         $hotelBooking->delete();
 
         return response()->json([

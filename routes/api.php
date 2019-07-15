@@ -57,9 +57,9 @@ Route::post('/room-types', 'RoomTypeController@store')->name('room-types.store')
 
 Route::get('/room-types/{id}', 'RoomTypeController@show')->name('room-types.show');
 
-Route::put('/room-types/{id}/update', 'RoomTypeController@update')->name('room-types.update');
+Route::put('/room-types/{id}', 'RoomTypeController@update')->name('room-types.update');
 
-Route::delete('/room-types/{id}/delete', 'RoomTypeController@destroy')->name('room-types.destroy');
+Route::delete('/room-types/{id}', 'RoomTypeController@destroy')->name('room-types.destroy');
 
 //room type prices
 Route::get('/room-type-prices', 'RoomTypePriceController@index')->name('room-type-prices.index');
