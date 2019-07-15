@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class HotelRoom
  *
- * @property RoomType roomType
+ * @property RoomType $roomType
+ * @property Hotel $hotel
+ * @property integer $id
  * @package App
  */
 class HotelRoom extends Model
