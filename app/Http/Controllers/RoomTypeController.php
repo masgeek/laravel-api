@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\HotelBookingResource;
+use App\Http\Resources\RoomTypeResource;
 use App\RoomType;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -11,15 +14,17 @@ class RoomTypeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return JsonResponse
      */
     public function index()
     {
         $rooms = RoomType::all();
 
-        return response()->json(
-            $rooms, 200)
+        $response = RoomTypeResource::collection($rooms)
+            ->response()
             ->header('X-Total-Count', $rooms->count());
+
+        return $response;
     }
 
     /**
