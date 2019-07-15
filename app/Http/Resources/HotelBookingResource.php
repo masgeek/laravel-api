@@ -37,7 +37,7 @@ class HotelBookingResource extends JsonResource
             'customer_email' => $this->customer_email,
             'total_nights' => $this->total_nights,
             'total_cost' => $this->total_cost,
-            'hotelRoomId' => $this->room->id,
+            'room_id' => $this->room->id,
             'hotelId' => $this->room->hotel->id
         ];
     }

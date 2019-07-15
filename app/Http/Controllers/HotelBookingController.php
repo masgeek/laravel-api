@@ -6,6 +6,7 @@ use App\HotelBooking;
 use App\Http\Requests\HotelBookingRequest;
 use App\Http\Resources\HotelBookingResource;
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -40,7 +41,24 @@ class HotelBookingController extends Controller
      */
     public function store(HotelBookingRequest $request)
     {
+
         $validated = $request->validated();
+
+        $startDate = strtotime($request->start_date);
+        $endDate = strtotime($request->end_date);
+        $datediff = $endDate - $startDate;
+
+        $numberOfDaays = round($datediff / (60 * 60 * 24));
+
+        $book = new HotelBooking();
+        $book->fill($request->all());
+        //$book->total_nights = $numberOfDaays;
+
+//        var_dump($request);
+
+
+        return $this->sendError(is_array($request), $book);
+
 
         $booking = HotelBooking::create($request->all());
 

@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class HotelBooking extends Model
 {
+    protected $guarded = [
+        'total_nights',
+        'total_cost'
+    ];
     protected $fillable = [
         'room_id',
         'start_date',
         'end_date',
         'customer_names',
         'customer_email',
-        'total_nights',
-        'total_cost'
     ];
 
     public function user()
