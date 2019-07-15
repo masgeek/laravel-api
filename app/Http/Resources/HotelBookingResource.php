@@ -29,6 +29,8 @@ class HotelBookingResource extends JsonResource
     {
         $this->room->roomType;
 
+        $roomPrice = $this->room->roomType->price;
+        $price = "{$roomPrice->currency} {$roomPrice->room_price} per Night";
         return [
             'id' => $this->id,
             'start_date' => $this->start_date,
@@ -38,7 +40,9 @@ class HotelBookingResource extends JsonResource
             'total_nights' => $this->total_nights,
             'total_cost' => $this->total_cost,
             'room_id' => $this->room->id,
-            'hotelId' => $this->room->hotel->id
+            'hotelId' => $this->room->hotel->id,
+            'currency' => $roomPrice->currency,
+            'pricePerNight' => $roomPrice->room_price
         ];
     }
 }

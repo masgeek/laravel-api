@@ -70,7 +70,8 @@ class HotelBookingController extends Controller
      */
     public function show($id)
     {
-        $hotelBooking = HotelBooking::with(['user', 'room', 'room.roomType'])->findOrFail($id);
+//        $hotelBooking = HotelBooking::with(['user', 'room', 'room.roomType'])->findOrFail($id);
+        $hotelBooking = HotelBooking::findOrFail($id);
 
         return (new HotelBookingResource($hotelBooking))
             ->response();

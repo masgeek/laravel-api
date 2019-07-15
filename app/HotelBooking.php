@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $total_nights
  * @property float $total_cost
+ * @method static findOrFail($id)
  */
 class HotelBooking extends Model
 {
