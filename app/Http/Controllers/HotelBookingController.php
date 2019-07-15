@@ -46,23 +46,19 @@ class HotelBookingController extends Controller
 
         $startDate = strtotime($request->start_date);
         $endDate = strtotime($request->end_date);
-        $datediff = $endDate - $startDate;
+        $dateDiff = $endDate - $startDate;
 
-        $numberOfDays = round($datediff / (60 * 60 * 24));
+        $numberOfDays = round($dateDiff / (60 * 60 * 24));
+        $totalCost = $numberOfDays * 45.78;
 
         $book = new HotelBooking();
         $book->fill($request->all());
-        //$book->total_nights = $numberOfDaays;
+        $book->total_nights = $numberOfDays;
+        $book->total_cost = round($totalCost, 2);
 
-//        var_dump($request);
+        $book->save();
 
-
-        return $this->sendError(is_array($request), $book);
-
-
-        $booking = HotelBooking::create($request->all());
-
-        return (new HotelBookingResource($booking))
+        return (new HotelBookingResource($book))
             ->response();
     }
 
@@ -83,22 +79,26 @@ class HotelBookingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param HotelBookingRequest $request
      * @param $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(HotelBookingRequest $request, $id)
     {
-        $request->validate([
-            'room_id' => 'nullable',
-            'start_date' => 'nullable',
-            'end_date' => 'nullable',
-            'customer_names' => 'nullable',
-            'customer_email' => 'nullable'
-        ]);
-
         $hotelBooking = HotelBooking::findOrFail($id);
-        $hotelBooking->update($request->all());
+
+        $startDate = strtotime($request->start_date);
+        $endDate = strtotime($request->end_date);
+        $dateDiff = $endDate - $startDate;
+
+        $numberOfDays = round($dateDiff / (60 * 60 * 24));
+        $totalCost = $numberOfDays * 45.78;
+
+        $hotelBooking->fill($request->all());
+        $hotelBooking->total_nights = $numberOfDays;
+        $hotelBooking->total_cost = round($totalCost, 2);
+
+        $hotelBooking->save();
 
         return response()->json($hotelBooking);
     }

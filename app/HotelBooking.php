@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $total_nights
+ * @property float $total_cost
+ */
 class HotelBooking extends Model
 {
     protected $guarded = [

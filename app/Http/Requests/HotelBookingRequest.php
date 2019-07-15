@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $start_date
+ * @property string $end_date
+ */
 class HotelBookingRequest extends FormRequest
 {
     /**
