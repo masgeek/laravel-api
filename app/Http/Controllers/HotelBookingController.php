@@ -52,12 +52,14 @@ class HotelBookingController extends Controller
      * Display the specified resource.
      *
      * @param $id
-     * @return Response
+     * @return JsonResponse
      */
     public function show($id)
     {
         $hotelBooking = HotelBooking::with(['user', 'room', 'room.roomType'])->findOrFail($id);
-        return response()->json($hotelBooking);
+
+        return (new HotelBookingResource($hotelBooking))
+            ->response();
     }
 
     /**

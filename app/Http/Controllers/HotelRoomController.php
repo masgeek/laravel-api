@@ -83,12 +83,15 @@ class HotelRoomController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param HotelRoom $hotelRoom
+     * @param $id
      * @return Response
      */
-    public
-    function destroy(HotelRoom $hotelRoom)
+    public function destroy($id)
     {
-        //
+        $hotelRoom = HotelRoom::findOrFail($id);
+
+        $hotelRoom->delete();
+
+        return response()->json([]);
     }
 }

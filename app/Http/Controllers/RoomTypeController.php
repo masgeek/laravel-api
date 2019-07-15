@@ -78,9 +78,9 @@ class RoomTypeController extends Controller
      */
     public function destroy($id)
     {
-        $article = RoomType::findOrFail($id);
+        $roomType = RoomType::findOrFail($id);
 
-        $article->delete();
+        $roomType->delete();
 
         return response()->json([]);
     }

@@ -17,10 +17,8 @@ class RoomTypePriceController extends Controller
     public function index()
     {
         $prices = RoomTypePrice::with(['roomType'])->get();
-        return response()->json([
-            'message' => 'Success!',
-            'data' => $prices
-        ], 200);
+        return response()->json($prices)
+            ->header('X-Total-Count', $prices->count());
     }
 
 
@@ -36,12 +34,9 @@ class RoomTypePriceController extends Controller
             'room_type_id' => 'required:integer',
             'room_price' => 'required:float',
         ]);
-        $price = RoomTypePrice::create($request->all());
+        $roomTypePrice = RoomTypePrice::create($request->all());
 
-        return response()->json([
-            'message' => 'Success! New room type price added',
-            'data' => $price
-        ]);
+        return response()->json($roomTypePrice);
     }
 
     /**
@@ -53,10 +48,7 @@ class RoomTypePriceController extends Controller
     public function show($id)
     {
         $roomTypePrice = RoomTypePrice::with(['roomType'])->find($id);
-        return response()->json([
-            'message' => 'Success!',
-            'data' => $roomTypePrice
-        ]);
+        return response()->json($roomTypePrice);
     }
 
     /**
@@ -76,10 +68,7 @@ class RoomTypePriceController extends Controller
         $roomTypePrice = RoomTypePrice::find($id);
         $roomTypePrice->update($request->all());
 
-        return response()->json([
-            'message' => 'Success! Room type price updated',
-            'data' => $roomTypePrice
-        ], 200);
+        return response()->json($roomTypePrice, 200);
     }
 
     /**
@@ -90,6 +79,10 @@ class RoomTypePriceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $roomTypePrice = RoomTypePrice::findOrFail($id);
+
+        $roomTypePrice->delete();
+
+        return response()->json([]);
     }
 }
