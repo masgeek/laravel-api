@@ -6,6 +6,7 @@ use App\HotelBooking;
 use App\Http\Requests\HotelBookingRequest;
 use App\Http\Resources\HotelBookingResource;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
@@ -16,13 +17,19 @@ class HotelBookingController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return AnonymousResourceCollection
+     * @return JsonResponse
      */
     public function index()
     {
         $bookings = HotelBooking::with(['user', 'room', 'room.roomType', 'room.hotel'])->get();
 
-        return HotelBookingResource::collection($bookings);
+        //return HotelBookingResource::collection($bookings);
+
+        $response = HotelBookingResource::collection($bookings)
+            ->response()
+            ->header('X-Total-Count', $bookings->count());
+
+        return $response;
     }
 
     /**
@@ -40,7 +47,7 @@ class HotelBookingController extends Controller
         return (new HotelBookingResource($booking))
             ->response()
             ->setStatusCode(201);
-        
+
 
         return response()->json([
             'message' => 'Success! New booking made',

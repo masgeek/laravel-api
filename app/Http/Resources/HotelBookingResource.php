@@ -7,13 +7,14 @@ use App\Http\Requests\HotelBookingRequest;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @property string start_date
- * @property integer room_id
- * @property integer total_nights
- * @property float total_cost
- * @property string end_date
- * @property string customer_names
- * @property string customer_email
+ * @property integer $id
+ * @property string $start_date
+ * @property integer $room_id
+ * @property integer $total_nights
+ * @property float $total_cost
+ * @property string $end_date
+ * @property string $customer_names
+ * @property string $customer_email
  * @property HotelRoom room
  */
 class HotelBookingResource extends JsonResource
@@ -27,16 +28,19 @@ class HotelBookingResource extends JsonResource
     public function toArray($request)
     {
         $this->room->roomType;
+
         return [
             //'room_id' => $this->room_id,
+            'id' => $this->id,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'customer_names' => $this->customer_names,
             'customer_email' => $this->customer_email,
             'total_nights' => $this->total_nights,
             'total_cost' => $this->total_cost,
-            'room' => $this->room,
-            'roomType' => $this->room->roomType->room_type_name
+            'hotelRoomId' => $this->room->id,
+//            'room' => $this->room,
+//            'roomType' => $this->room->roomType->room_type_name
         ];
     }
 }

@@ -17,10 +17,9 @@ class RoomTypeController extends Controller
     {
         $rooms = RoomType::all();
 
-        return response()->json([
-            'message' => 'Success!',
-            'data' => $rooms
-        ]);
+        return response()->json(
+            $rooms, 200)
+            ->header('X-Total-Count', $rooms->count());
     }
 
     /**

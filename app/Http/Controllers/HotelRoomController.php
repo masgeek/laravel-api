@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\HotelRoom;
+use App\Http\Resources\HotelBookingResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -17,10 +18,10 @@ class HotelRoomController extends Controller
     {
         $rooms = HotelRoom::with(['hotel', 'roomType'])->get();
 
-        return response()->json([
-            'message' => 'Success!',
-            'data' => $rooms
-        ]);
+        return response(
+            $rooms
+        )->header('X-Total-Count', $rooms->count());
+
     }
 
     /**
