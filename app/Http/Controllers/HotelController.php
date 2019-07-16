@@ -12,9 +12,8 @@ class HotelController extends Controller
     {
         $hotels = Hotel::all();
 
-        return response()->json(
-            $hotels
-        , 200) ->header('X-Total-Count', $hotels->count());
+        return response()->json($hotels)
+            ->header('X-Total-Count', $hotels->count());
     }
 
     public function store(Request $request)
@@ -33,19 +32,13 @@ class HotelController extends Controller
 
         $hotel = Hotel::create($request->all());
 
-        return response()->json([
-            'message' => 'Success! New hotel created',
-            'hotel' => $hotel
-        ]);
+        return response()->json($hotel);
     }
 
     public function show($id)
     {
-        $hotel = Hotel::all()->find($id);
-        return response()->json([
-            'message' => 'Success!',
-            'data' => $hotel
-        ]);
+        $hotel = Hotel::findOrFail($id);
+        return response()->json($hotel);
     }
 
     public function update(Request $request, $id)
@@ -65,10 +58,7 @@ class HotelController extends Controller
 
         $hotel->update($request->all());
 
-        return response()->json([
-            'message' => 'Success! Hotel updated',
-            'data' => $hotel
-        ]);
+        return response()->json($hotel);
     }
 
     public function destroy($id)
@@ -76,9 +66,6 @@ class HotelController extends Controller
         $hotel = Hotel::find('id', $id);
         $hotel->delete();
 
-        return response()->json([
-            'message' => 'Successfully deleted hotel!',
-            'data' => []
-        ]);
+        return response()->json([]);
     }
 }

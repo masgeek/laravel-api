@@ -23,12 +23,11 @@ class RoomTypeResource extends JsonResource
     public function toArray($request)
     {
         //return parent=>=>toArray($request);
-        $this->price;
         return [
             "id" => $this->id,
             "room_type_name" => $this->room_type_name,
-            'currency' => $this->price->currency,
-            'room_price' => $this->price->room_price,
+            'currency' => $this->price != null ? $this->price->currency : 'USD',
+            'room_price' => $this->price != null ? $this->price->room_price : 0,
         ];
     }
 }
