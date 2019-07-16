@@ -35,7 +35,7 @@ class HotelRequest extends FormRequest
             'zip_code' => 'required:string',
             'phone_number' => 'required:string:max:20',
             'email' => 'required:string',
-            'image' => 'required',
+//            'image' => 'required',
         ];
     }
 
@@ -50,7 +50,7 @@ class HotelRequest extends FormRequest
             'zip_code.required' => 'Zip code is required',
             'phone_number.required' => 'Phone number is required',
             'email.required' => 'Email is required',
-            'image.required' => 'Hotel image is required',
+//            'image.required' => 'Hotel image is required',
         ];
     }
 }

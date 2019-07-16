@@ -48,11 +48,13 @@ class HotelController extends Controller
         $imageSrc = $request->pictures['src'];
 
         $hotel = $this->loadHotel($id);
+
         $hotel->fill($request->all());
         $hotel->image = $imageSrc;
 
         $request->validated();
-       $hotel->save();
+
+        $hotel->save();
 
         return response()->json($hotel);
     }

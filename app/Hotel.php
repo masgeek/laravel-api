@@ -23,4 +23,8 @@ class Hotel extends Model
         'phone_number',
         'email'
     ];
+
+    function bookings(){
+        $this->hasMany(HotelBooking::class);
+    }
 }
