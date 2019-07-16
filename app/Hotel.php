@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $id
+ * @property  object $image
  * @method static findOrFail($id)
  */
 class Hotel extends Model
@@ -24,7 +25,8 @@ class Hotel extends Model
         'email'
     ];
 
-    function bookings(){
+    function bookings()
+    {
         $this->hasMany(HotelBooking::class);
     }
 }

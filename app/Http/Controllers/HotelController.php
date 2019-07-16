@@ -18,22 +18,15 @@ class HotelController extends Controller
             ->header('X-Total-Count', $hotels->count());
     }
 
-    public function store(Request $request)
+    public function store(HotelRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'country' => 'required',
-            'zip_code' => 'required',
-            'phone_number' => 'required',
-            'email' => 'required',
-            'image' => 'required',
-        ]);
+        $imageSrc = $request->pictures['src'];
+        $hotel = new Hotel();
+        $hotel->fill($request->all());
+        $hotel->image = $imageSrc;
 
-        $hotel = Hotel::create($request->all());
-
+        $request->validated();
+        $hotel->save();
         return response()->json($hotel);
     }
 

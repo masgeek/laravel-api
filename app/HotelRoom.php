@@ -10,24 +10,28 @@ use Illuminate\Database\Eloquent\Model;
  * @property RoomType $roomType
  * @property Hotel $hotel
  * @property integer $id
+ * @property  object $image
+ * @property  string $room_name
  * @package App
  */
 class HotelRoom extends Model
 {
+    protected $guarded = [
+        'image'
+    ];
     protected $fillable = [
         'hotel_id',
         'room_type_id',
-        'room_name',
-        'image'
+        'room_name'
     ];
 
     public function hotel()
     {
-        return $this->belongsTo('App\Hotel');
+        return $this->belongsTo(Hotel::class);
     }
 
     public function roomType()
     {
-        return $this->belongsTo('App\RoomType');
+        return $this->belongsTo(RoomType::class);
     }
 }
