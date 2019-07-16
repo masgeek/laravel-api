@@ -47,7 +47,7 @@ class HotelRoomController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param HotelRoom $hotelRoom
+     * @param $id
      * @return Response
      */
     public function show($id)
@@ -59,18 +59,21 @@ class HotelRoomController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param HotelRoomRequest $request
      * @param $id
      * @return Response
      */
     public function update(HotelRoomRequest $request, $id)
     {
-        $hotelRoom = HotelRoom::find($id);
+        $imageSrc = $request->pictures['src'];
+        $hotelRoom = HotelRoom::findOrFail($id);
+        $hotelRoom->fill($request->all());
+        $hotelRoom->image = $imageSrc;
 
         $request->validated();
-        $room = $hotelRoom->update($request->all());
+        $hotelRoom->save();
 
-        return response()->json($room);
+        return response()->json($hotelRoom);
     }
 
     /**
