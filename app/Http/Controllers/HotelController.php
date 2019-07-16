@@ -43,8 +43,9 @@ class HotelController extends Controller
         $hotel = $this->loadHotel($id);
 
         $hotel->fill($request->all());
-        $hotel->image = $imageSrc;
-
+        if ($imageSrc != null) {
+            $hotel->image = $imageSrc;
+        }
         $request->validated();
 
         $hotel->save();

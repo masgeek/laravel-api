@@ -68,7 +68,9 @@ class HotelRoomController extends Controller
         $imageSrc = $request->pictures['src'];
         $hotelRoom = HotelRoom::findOrFail($id);
         $hotelRoom->fill($request->all());
-        $hotelRoom->image = $imageSrc;
+        if ($imageSrc != null) {
+            $hotelRoom->image = $imageSrc;
+        }
 
         $request->validated();
         $hotelRoom->save();
