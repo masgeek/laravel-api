@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Hotel;
 use App\RoomTypePrice;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -43,17 +44,15 @@ class HotelController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'nullable',
-            'address' => 'nullable',
-            'city' => 'nullable',
-            'state' => 'nullable',
-            'country' => 'nullable',
-            'zip_code' => 'nullable',
-            'phone_number' => 'nullable',
-            'email' => 'nullable',
-            'image' => 'nullable',
-        ]);
+        $image = $request->pictures;
+
+        $data = [
+            'h' => is_array($image),
+            'b' => $image['src']
+        ];
+
+        return response()->json($data);
+
         $hotel = Hotel::find($id);
 
         $hotel->update($request->all());
