@@ -42,7 +42,7 @@ class HotelBookingController extends Controller
     public function store(HotelBookingRequest $request)
     {
 
-        $validated = $request->validated();
+
 
         $startDate = strtotime($request->start_date);
         $endDate = strtotime($request->end_date);
@@ -56,6 +56,7 @@ class HotelBookingController extends Controller
         $book->total_nights = $numberOfDays;
         $book->total_cost = round($totalCost, 2);
 
+        $request->validated();
         $book->save();
 
         return (new HotelBookingResource($book))

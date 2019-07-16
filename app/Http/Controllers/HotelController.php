@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
+use App\Http\Requests\HotelRequest;
 use App\RoomTypePrice;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
@@ -38,33 +39,37 @@ class HotelController extends Controller
 
     public function show($id)
     {
-        $hotel = Hotel::findOrFail($id);
+        $hotel = $this->loadHotel($id);
         return response()->json($hotel);
     }
 
-    public function update(Request $request, $id)
+    public function update(HotelRequest $request, $id)
     {
-        $image = $request->pictures;
+        $imageSrc = $request->pictures['src'];
 
-        $data = [
-            'h' => is_array($image),
-            'b' => $image['src']
-        ];
+        $hotel = $this->loadHotel($id);
+        $hotel->fill($request->all());
+        $hotel->image = $imageSrc;
 
-        return response()->json($data);
-
-        $hotel = Hotel::find($id);
-
-        $hotel->update($request->all());
+        $request->validated();
+       $hotel->save();
 
         return response()->json($hotel);
     }
 
     public function destroy($id)
     {
-        $hotel = Hotel::find('id', $id);
+        $hotel = $this->loadHotel($id);
         $hotel->delete();
-
         return response()->json([]);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    private function loadHotel($id)
+    {
+        return Hotel::findOrFail($id);
     }
 }

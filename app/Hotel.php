@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $id
+ * @method static findOrFail($id)
  */
 class Hotel extends Model
 {
